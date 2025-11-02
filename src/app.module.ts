@@ -9,12 +9,10 @@ import { TratamientoController } from './tratamiento/tratamiento.controller';
 import { TratamientoService } from './tratamiento/tratamiento.service';
 import { TurnoService } from './turno/turno.service';
 import { TurnoController } from './turno/turno.controller';
-import { MedicamentoController } from './medicamento/medicamento.controller';
-import { MedicamentoService } from './medicamento/medicamento.service';
 
 @Module({
   imports: [],
-  controllers: [AppController, PacienteController, ClienteController, TratamientoController, TurnoController, MedicamentoController],
-  providers: [AppService, PacienteService, ClienteService, TratamientoService, TurnoService, MedicamentoService],
+  controllers: [AppController, PacienteController, ClienteController, TratamientoController, TurnoController],
+  providers: [AppService, PacienteService, ClienteService, TratamientoService, TurnoService],
 })
 export class AppModule {}

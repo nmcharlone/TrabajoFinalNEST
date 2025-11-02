@@ -34,3 +34,21 @@ nombre (texto)
 descrip (texto)
 medicamento (texto)
 obligatorio  si/no (bool)
+
+
+crear funcion que "conecte" paciente y cliente para modificar la lista de pacientes en un cliente
+meter el clientes +1 del id
+
+
+
+
+**TEST**
+-
+post localhost:3000/cliente/registrar
+{
+            
+            "nombre": "horacio",
+            "pacientes": [],
+            "numTel": "0000123456",
+            "mail": "horacio@mail.com"
+}
