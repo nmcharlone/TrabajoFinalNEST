@@ -1,7 +1,7 @@
 export class clienteModel{
     id: number;
     nombre: string;
-    pacientes: []; //lista de pacientes
+    pacientes: any[]; //lista de pacientes
     numTel: string;
     mail: string;
 }
