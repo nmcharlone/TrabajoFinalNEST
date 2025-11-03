@@ -52,3 +52,12 @@ post localhost:3000/cliente/registrar
             "numTel": "0000123456",
             "mail": "horacio@mail.com"
 }
+
+{//tratamiento.model
+    //id: number;
+    codigoTratamiento?: number;
+    nombre: string;
+    descripcion: string; //operacion, checkeo, diagnostico, etc
+    medicamento: string; //incluye vacunas
+    esObligatorio: boolean;
+}

@@ -1,8 +1,8 @@
 export class turnoModel {
-    id: number;
+    id?: number;
     idPaciente: number;
     idCliente: number;
-    fecha: Date;
+    fecha?: number;
     idTratamiento: number;
     descripcion: string;
 }

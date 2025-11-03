@@ -1,9 +1,9 @@
 export class tratamientoModel {
     //id: number;
-    codigoTratamiento: number;
+    codigoTratamiento?: number;
     nombre: string;
     descripcion: string;
-    medicamento: string;
+    medicamento: string; 
     esObligatorio: boolean;
 }
 /*

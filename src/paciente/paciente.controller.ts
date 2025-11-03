@@ -1,6 +1,7 @@
-import { Controller } from '@nestjs/common';
-import { Get } from '@nestjs/common';
+import { Body, Controller } from '@nestjs/common';
+import { Get, Post } from '@nestjs/common';
 import { PacienteService } from './paciente.service';
+import { pacienteModel } from './paciente.model';
 
 @Controller('paciente')
 export class PacienteController {
@@ -8,6 +9,12 @@ export class PacienteController {
     
     }
     
+    @Post('registrar')
+    registrarPaciente(@Body() paciente: pacienteModel): string {
+       return this.pacientesService.registrarPaciente(paciente);
+    }
+
+
     @Get()
     getPacientes(){
        return this.pacientesService.getPacientes();

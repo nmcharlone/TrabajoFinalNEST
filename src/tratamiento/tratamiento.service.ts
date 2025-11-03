@@ -15,11 +15,20 @@ export class TratamientoService {
         }
         this.tratamientos.push(tratamientoGet);
     }*/
-
+    registrarTratamiento(tratamiento: tratamientoModel): string {
+        let newTratamiento = {
+            "codigoTratamiento": this.tratamientos.length + 1,
+            "nombre": tratamiento.nombre,
+            "descripcion": tratamiento.descripcion,
+            "medicamento": tratamiento.medicamento,
+            "esObligatorio": tratamiento.esObligatorio
+        };
+        this.tratamientos.push(newTratamiento);
+        return "Tratamiento registrado correctamente";
+    }
 
 
     getTratamientos() {
-        
         return this.tratamientos;
     }
 }
