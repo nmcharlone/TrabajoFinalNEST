@@ -1,9 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { turnoModel } from './turno.model';
+import { PacienteService } from 'src/paciente/paciente.service';
 
 @Injectable()
 export class TurnoService {
     private turnos: turnoModel[] = [];
+    constructor(private readonly pacienteService: PacienteService) {}
     /*constructor() {
         let turnoGet: turnoModel = {
             "id": 1,
@@ -24,6 +26,9 @@ export class TurnoService {
            "idTratamiento": turno.idTratamiento,
            "descripcion": turno.descripcion
        };
+
+
+       const resultado = this.pacienteService.añadirTurnoAHistorialMedico(newTurno.idPaciente, newTurno);
        this.turnos.push(newTurno);
        return "Turno registrado correctamente";
    }

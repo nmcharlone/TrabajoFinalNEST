@@ -1,4 +1,4 @@
-import { Body, Controller } from '@nestjs/common';
+import { Body, Controller, Param } from '@nestjs/common';
 import { Get, Post } from '@nestjs/common';
 import { PacienteService } from './paciente.service';
 import { pacienteModel } from './paciente.model';
@@ -14,6 +14,11 @@ export class PacienteController {
        return this.pacientesService.registrarPaciente(paciente);
     }
 
+
+    @Get('historialMedico/:idPaciente')
+    obtenerHistorialMedico(@Param('idPaciente') idPaciente: number): any[] {
+       return this.pacientesService.obtenerHistorialMedico(idPaciente);
+    }
 
     @Get()
     getPacientes(){

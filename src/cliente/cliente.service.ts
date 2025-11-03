@@ -26,6 +26,18 @@ export class ClienteService {
         this.clientes.push(newCliente);
         return "Cliente registrado con éxito";
     }
+    añadirPacienteACliente(idCliente: number, idPaciente: number): string {
+        let clienteModel = this.clientes.find(c => c.id === idCliente);
+        if (clienteModel) {
+            if (!clienteModel.pacientes) {
+                clienteModel.pacientes = [];
+            }
+            clienteModel.pacientes.push(idPaciente);
+            return "Paciente añadido al cliente correctamente";
+        } else {
+            return "Cliente no encontrado";
+        }
+    }
     
     getClientes() {
         return this.clientes;

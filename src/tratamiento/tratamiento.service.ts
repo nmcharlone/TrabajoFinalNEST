@@ -4,17 +4,17 @@ import { tratamientoModel } from './tratamiento.model';
 @Injectable()
 export class TratamientoService {
     private tratamientos: tratamientoModel[] = [];
-    /*constructor() {
+    constructor() {
 
         let tratamientoGet: tratamientoModel = {
             "codigoTratamiento": 1,
-            "nombre": "tratamiento1",
-            "descripcion": "descripcion1",
-            "medicamento": "medicamento1",
+            "nombre": "checkeo1",
+            "descripcion": "Revision general",
+            "medicamento": "Sin medicamentos",
             "esObligatorio": false
         }
         this.tratamientos.push(tratamientoGet);
-    }*/
+    }
     registrarTratamiento(tratamiento: tratamientoModel): string {
         let newTratamiento = {
             "codigoTratamiento": this.tratamientos.length + 1,
@@ -26,7 +26,7 @@ export class TratamientoService {
         this.tratamientos.push(newTratamiento);
         return "Tratamiento registrado correctamente";
     }
-
+    
 
     getTratamientos() {
         return this.tratamientos;
