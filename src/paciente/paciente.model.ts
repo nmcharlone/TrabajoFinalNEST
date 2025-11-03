@@ -3,5 +3,5 @@ export class pacienteModel {
     nombre: string;
     idCliente: number;
     // va en un get nombreCliente: string;
-    historialMedico: []; //lista de turnos
+    historialMedico: any[]; //lista de turnos
 }

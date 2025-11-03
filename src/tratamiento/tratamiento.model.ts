@@ -1,5 +1,5 @@
 export class tratamientoModel {
-    id: number;
+    //id: number;
     codigoTratamiento: number;
     nombre: string;
     descripcion: string;
