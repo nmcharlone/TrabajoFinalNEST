@@ -12,7 +12,28 @@ export class ClienteService {
         "numTel": "123456789",
         "mail": "juan.perez@example.com"
         }
-        this.clientes.push(clienteGet);
+        
+        //this.clientes.push(clienteGet);
+        this.registrarCliente(clienteGet);
+
+        clienteGet = {
+        "id": 2,
+        "nombre": "Maria Gomez",
+        "pacientes": [],
+        "numTel": "987654321",
+        "mail": "maria.gomez@example.com"
+        }
+        //this.clientes.push(clienteGet);
+        this.registrarCliente(clienteGet);
+        clienteGet = {
+        "id": 3,
+        "nombre": "Carlos Sanchez",
+        "pacientes": [],
+        "numTel": "555666777",
+        "mail": "carlos.sanchez@example.com"   
+        }
+        //this.clientes.push(clienteGet);
+        this.registrarCliente(clienteGet);
     }
     registrarCliente(cliente: clienteModel) : string{
 

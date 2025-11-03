@@ -5,16 +5,41 @@ import { ClienteService } from '../cliente/cliente.service';
 @Injectable()
 export class PacienteService {
     private pacientes: pacienteModel[] = [];
-    constructor(private readonly clienteService: ClienteService) {}
-    /*constructor() {
+    constructor(private readonly clienteService: ClienteService) {
         let pacienteGet: pacienteModel = {
             "id": 1,
-            "nombre": "paciente1",
+            "nombre": "Kuro",
             "idCliente": 1,
             "historialMedico": []
         }
-        this.pacientes.push(pacienteGet);
-    }*/
+        //this.pacientes.push(pacienteGet);
+        this.registrarPaciente(pacienteGet);
+        pacienteGet = {
+            "id": 2,
+            "nombre": "Shiro",
+            "idCliente": 1,
+            "historialMedico": []
+        }
+        //this.pacientes.push(pacienteGet);
+        this.registrarPaciente(pacienteGet);
+        pacienteGet = {
+            "id": 3,
+            "nombre": "Ru",
+            "idCliente": 2,
+            "historialMedico": []
+        }
+        //this.pacientes.push(pacienteGet);
+        this.registrarPaciente(pacienteGet);
+        pacienteGet = {
+            "id": 4,
+            "nombre": "Sein",
+            "idCliente": 3,
+            "historialMedico": []
+        }
+        //this.pacientes.push(pacienteGet);
+        this.registrarPaciente(pacienteGet);
+    }
+    
     registrarPaciente(paciente: pacienteModel): string {
         let newPaciente = {
         "id": this.pacientes.length + 1,
@@ -47,7 +72,7 @@ export class PacienteService {
     }
 
     obtenerHistorialMedico(idPaciente: number): any[] {
-        let pacienteModel = this.pacientes.find(p => p.id === idPaciente);
+        let pacienteModel = this.pacientes.find(p => p.id == idPaciente);
         if (pacienteModel) {
             if (!pacienteModel.historialMedico) {
                 pacienteModel.historialMedico = [];
