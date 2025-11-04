@@ -7,7 +7,7 @@ export class ClienteController {
     constructor(private readonly clienteService: ClienteService) {}
 
     @Post('registrar')
-    registrarCliente(@Body() cliente: clienteModel) : string {
+    registrarCliente(@Body() cliente: clienteModel): string {
         return this.clienteService.registrarCliente(cliente);
     }
 

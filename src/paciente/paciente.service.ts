@@ -12,7 +12,6 @@ export class PacienteService {
             "idCliente": 1,
             "historialMedico": []
         }
-        //this.pacientes.push(pacienteGet);
         this.registrarPaciente(pacienteGet);
         pacienteGet = {
             "id": 2,
@@ -20,7 +19,6 @@ export class PacienteService {
             "idCliente": 1,
             "historialMedico": []
         }
-        //this.pacientes.push(pacienteGet);
         this.registrarPaciente(pacienteGet);
         pacienteGet = {
             "id": 3,
@@ -28,7 +26,6 @@ export class PacienteService {
             "idCliente": 2,
             "historialMedico": []
         }
-        //this.pacientes.push(pacienteGet);
         this.registrarPaciente(pacienteGet);
         pacienteGet = {
             "id": 4,
@@ -36,7 +33,6 @@ export class PacienteService {
             "idCliente": 3,
             "historialMedico": []
         }
-        //this.pacientes.push(pacienteGet);
         this.registrarPaciente(pacienteGet);
     }
     
@@ -48,10 +44,6 @@ export class PacienteService {
         "historialMedico": []
         
         };
-        //cliente.pacientes.push(newPaciente.id);
-
-        //const clienteService = new ClienteService();
-        //clienteService.añadirPacienteACliente(newPaciente.idCliente, newPaciente.id);
         const resultado = this.clienteService.añadirPacienteACliente(newPaciente.idCliente, newPaciente.id);
         this.pacientes.push(newPaciente);
         return "Paciente registrado correctamente";
@@ -88,5 +80,26 @@ export class PacienteService {
     getPacientes() {
 
         return this.pacientes;
+    }
+
+    consultarPacientesConChequeoAnual(): any[] {
+        const hoy = new Date();
+        const pacientesPendientes: pacienteModel[] = [];
+
+        for (const paciente of this.pacientes) {
+            for (const turno of paciente.historialMedico || []) {
+                if ([2, 3].includes(turno.idTratamiento)) {
+                    const fechaTurno = new Date(turno.fecha);
+                    const diferenciaAnios = hoy.getFullYear() - fechaTurno.getFullYear();
+
+                    if (diferenciaAnios >= 1) {
+                        pacientesPendientes.push(paciente);
+                        break;
+                    }
+                }
+            }
+        }
+
+        return pacientesPendientes;
     }
 }

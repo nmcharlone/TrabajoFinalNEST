@@ -24,4 +24,9 @@ export class PacienteController {
     getPacientes(){
        return this.pacientesService.getPacientes();
      }
+
+    @Get('chequeoAnual')
+    consultarPacientesConChequeoAnual() {
+       return this.pacientesService.consultarPacientesConChequeoAnual();
+    }
 }

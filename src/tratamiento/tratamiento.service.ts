@@ -7,16 +7,13 @@ export class TratamientoService {
     constructor() {
 
         let tratamientoGet: tratamientoModel = {
-            //"codigoTratamiento": 1,
             "nombre": "Revision general",
             "descripcion": "No obligatorio",
             "medicamento": "Sin medicamentos",
             "esObligatorio": false
         }
-        //this.tratamientos.push(tratamientoGet);
         this.registrarTratamiento(tratamientoGet);
         tratamientoGet = {
-            //"codigoTratamiento": 2,
             "nombre": "Revision anual",
             "descripcion": "Obligatorio",
             "medicamento": "Sin medicamentos",
@@ -24,7 +21,6 @@ export class TratamientoService {
         }
         this.registrarTratamiento(tratamientoGet);
         tratamientoGet = {
-            //"codigoTratamiento": 3,
             "nombre": "Vacunacion antirrabica",
             "descripcion": "Obligatorio",
             "medicamento": "Vacuna antirrabica",
@@ -32,7 +28,7 @@ export class TratamientoService {
         }
         this.registrarTratamiento(tratamientoGet);
         tratamientoGet = {
-            //"codigoTratamiento": 4,
+            
             "nombre": "Castracion",
             "descripcion": "No obligatorio",
             "medicamento": "Anestesia general",

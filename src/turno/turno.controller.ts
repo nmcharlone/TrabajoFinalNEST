@@ -1,5 +1,5 @@
 import { Controller } from '@nestjs/common';
-import { Get, Post, Body } from '@nestjs/common';
+import { Get, Post, Body, Put, Param } from '@nestjs/common';
 import { TurnoService } from './turno.service';
 import { turnoModel } from './turno.model';
 
@@ -13,7 +13,10 @@ export class TurnoController {
     }
 
 
-
+    @Put('modificar/:id')
+    modificarTurno(@Param('id') id: number, @Body() datosModificados: Partial<turnoModel>): string {
+        return this.turnoService.modificarTurno(Number(id), datosModificados);
+    }
 
     @Get()
     getTurnos() {

@@ -7,55 +7,44 @@ export class TurnoService {
     private turnos: turnoModel[] = [];
     constructor(private readonly pacienteService: PacienteService) {
         let turnoGet: turnoModel = {
-            //"id": 1,
             "idPaciente": 1,
             "idCliente": 1,
-            //"fecha": new Date(),
-            "fecha": 12122025,
+            "fecha": new Date('2025-12-12'),
             "idTratamiento": 1,
             "descripcion": "descripcion1"
         };
-        //this.turnos.push(turnoGet);
         this.registrarTurno(turnoGet);
         turnoGet = {
-            //"id": 2,
             "idPaciente": 2,
             "idCliente": 1,
-            "fecha": 12122025,
+            "fecha": new Date('2025-12-12'),
             "idTratamiento": 1,
             "descripcion": "descripcion2"
         };
-        //this.turnos.push(turnoGet);
         this.registrarTurno(turnoGet);
         turnoGet = {
-            //"id": 3,
             "idPaciente": 3,
             "idCliente": 2,
-            "fecha": 12122025,
+            "fecha": new Date('2025-12-12'),
             "idTratamiento": 1,
             "descripcion": "descripcion3"
         };
-        //this.turnos.push(turnoGet);
         this.registrarTurno(turnoGet);
         turnoGet = {
-            //"id": 4,
             "idPaciente": 4,
             "idCliente": 3,
-            "fecha": 12122025,
+            "fecha": new Date('2025-12-12'),
             "idTratamiento": 1,
             "descripcion": "descripcion4"
         };
-        //this.turnos.push(turnoGet);
         this.registrarTurno(turnoGet);
         turnoGet = {
-            //"id": 5,
             "idPaciente": 1,
             "idCliente": 1,
-            "fecha": 12122025,
+            "fecha": new Date('2025-12-12'),
             "idTratamiento": 2,
             "descripcion": "descripcion5"
         };
-        //this.turnos.push(turnoGet);
         this.registrarTurno(turnoGet);
     }
    registrarTurno(turno: turnoModel): string {
@@ -78,5 +67,28 @@ export class TurnoService {
 
     getTurnos() {
         return this.turnos;
+    }
+
+    modificarTurno(id: number, datosModificados: Partial<turnoModel>): string {
+        const turno = this.turnos.find(t => t.id === id);
+        if (!turno) {
+            return "Turno no encontrado";
+        }
+
+        if (datosModificados.fecha) turno.fecha = new Date(datosModificados.fecha);
+        if (datosModificados.idTratamiento !== undefined) turno.idTratamiento = datosModificados.idTratamiento;
+        if (datosModificados.descripcion !== undefined) turno.descripcion = datosModificados.descripcion;
+
+        const paciente = this.pacienteService.getPacientes().find(p => p.id === turno.idPaciente);
+        if (paciente && paciente.historialMedico) {
+            const turnoEnHistorial = paciente.historialMedico.find(t => t.id === id);
+            if (turnoEnHistorial) {
+                turnoEnHistorial.fecha = turno.fecha;
+                turnoEnHistorial.idTratamiento = turno.idTratamiento;
+                turnoEnHistorial.descripcion = turno.descripcion;
+            }
+        }
+
+        return "Turno modificado correctamente";
     }
 }
